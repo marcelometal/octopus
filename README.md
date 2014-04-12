@@ -85,6 +85,7 @@ It has the following information:
 * `cookies` - dictionary with request cookie values;
 * `headers` - dictionary with response headers;
 * `text` - the body of the response;
+* `content` - the response body as bytes, for non-text requests;
 * `effective_url` - in the case of redirects, this url might be different than url;
 * `error` - if an error has occurred this is where the error message will be;
 * `request_time` - the time ellapsed between the start and the end of the request in seconds.

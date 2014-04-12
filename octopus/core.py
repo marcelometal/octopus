@@ -77,11 +77,16 @@ class Octopus(object):
             self.start()
 
     def from_requests_response(self, url, response):
+        content = None
+        if hasattr(response, 'content'):
+            content = response.content
+
         return Response(
             url=url, status_code=response.status_code,
             headers=dict([(key, value) for key, value in response.headers.items()]),
             cookies=dict([(key, value) for key, value in response.cookies.items()]),
             text=response.text, effective_url=response.url,
+            content=content,
             error=response.status_code > 399 and response.text or None,
             request_time=response.elapsed and response.elapsed.total_seconds or 0
         )

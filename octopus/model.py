@@ -5,7 +5,7 @@
 class Response(object):
     def __init__(
         self, url, status_code,
-        headers, cookies, text, effective_url,
+        headers, cookies, text, content, effective_url,
         error, request_time
     ):
         self.url = url
@@ -13,6 +13,7 @@ class Response(object):
         self.cookies = cookies
         self.headers = headers
         self.text = text
+        self.content = content
         self.effective_url = effective_url
         self.error = error
         self.request_time = request_time

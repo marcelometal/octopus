@@ -21,7 +21,8 @@ class TestResponseModel(TestCase):
             text='some request body',
             effective_url='http://www.google.com/',
             error="some error message",
-            request_time=10.24
+            request_time=10.24,
+            content="\x89PNG\r\n\x1a\n\x00"
         )
 
         expect(response.url).to_equal('http://www.google.com')
@@ -33,6 +34,7 @@ class TestResponseModel(TestCase):
             'whatever': 'some-value'
         })
         expect(response.text).to_equal('some request body')
+        expect(response.content).to_equal("\x89PNG\r\n\x1a\n\x00")
         expect(response.effective_url).to_equal('http://www.google.com/')
         expect(response.error).to_equal('some error message')
         expect(response.request_time).to_equal(10.24)
